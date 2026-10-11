@@ -1,55 +1,33 @@
-# Prerequisites
-*.d
+# ---------- Executables ----------
+exec
+exec_*
 
-# Object files
+# ---------- Object files ----------
 *.o
-*.ko
-*.obj
-*.elf
 
-# Linker output
-*.ilk
-*.map
-*.exp
+# ---------- Large datasets (not used in this project, >50 MB) ----------
+# optdigits.tra / optdigits.cv are kept
+mnist_format.*
 
-# Precompiled Headers
-*.gch
-*.pch
+# ---------- Job outputs (SLURM) ----------
+slurm-*.out
+*.err
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# ---------- Profiling data ----------
+perf.data*
+profile.*
+*.trc
+*.edf
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
+# ---------- LaTeX build files (keep .tex and the final PDF) ----------
+*.aux
+*.log
+*.toc
 *.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+*.synctex.gz
+*.fls
+*.fdb_latexmk
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
-
-# debug information files
-*.dwo
+# ---------- Editor / OS ----------
+.vscode/
+.DS_Store
