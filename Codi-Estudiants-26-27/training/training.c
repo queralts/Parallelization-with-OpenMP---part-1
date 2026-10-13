@@ -17,7 +17,6 @@
 
 #include <math.h>
 #include <stdio.h>
-#include <omp.h>
 
 
 /**
