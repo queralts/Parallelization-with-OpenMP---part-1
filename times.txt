@@ -1,0 +1,60 @@
+WILMA (new-nodo.q):
+Només forward_prop parallelitzada.
+Num threads=2
+- T(N, 2) = 8.733491s
+- Total encerts = 929 (/946) 
+Num threads=4
+- T(N, 4) = 7.562934s
+- Total encerts = 929 (/946) 
+Num threads=6
+- T(N, 6)= 7.165764s
+- Total encerts = 929 (/946)
+Num threads=12
+- T(N, 12)= 6.724122s
+- Total encerts = 929 (/946)
+
+AOLIN (TEST.Q):
+Només forward_prop parallelitzada
+Num threads=2
+- T(N, 2) = 10.990096s
+- Total encerts=929 (/946)
+Num threads=4
+- T(N, 4) = 10.948212s
+- Total encerts=929(/946)
+Num threads=6
+- T(N, 6) = 11.018212s
+- Total encerts=929(/946)
+Num threads=12
+- T(N, 12) = 11.059335s
+- Total encerts=929 (/946)
+
+WILMA (nodo.q):
+
+Només forward_prop parallelitzada.
+Num threads=2
+- T(N, 2) = 31.137338s
+- Total encerts = 929 (/946) 
+Num threads=4
+- T(N, 4) = 26.105798s
+- Total encerts = 929 (/946) 
+Num threads=6
+- T(N, 6)= 24.589777s
+- Total encerts = 929 (/946)
+Num threads=12
+- T(N, 12)= 23.513262s
+- Total encerts = 929 (/946)
+
+AOLIN (AOLIN.Q):
+Només forward_prop parallelitzada
+Num threads=2
+- T(N, 2) = 
+- Total encerts= (/946)
+Num threads=4
+- T(N, 4) = 
+- Total encerts=  (/946)
+Num threads=6
+- T(N, 6) = 
+- Total encerts=  (/946)
+Num threads=12
+- T(N, 12) = 
+- Total encerts=  (/946)

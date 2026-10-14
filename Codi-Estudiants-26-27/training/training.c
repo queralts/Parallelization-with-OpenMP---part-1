@@ -68,20 +68,29 @@ void init_deltas() {
  */
 void forward_prop() {
     for (int i = 1; i < num_layers; i++) {
-        if (debug == 1) printf("Valors activació capa %d \n", i);
+
+        #pragma omp parallel for schedule(static)
         for (int j = 0; j < num_neurons[i]; j++) {
             lay[i].z[j] = lay[i].bias[j];
+
             for (int k = 0; k < num_neurons[i - 1]; k++)
                 lay[i].z[j] +=
                     ((lay[i - 1].out_weights[j * num_neurons[i - 1] + k]) *
                      (lay[i - 1].actv[k]));
+                     
             if (i < num_layers - 1)  // Relu Activation Function for Hidden Layers
                 lay[i].actv[j] = ((lay[i].z[j]) < 0) ? 0 : lay[i].z[j];
             else  // Sigmoid Activation Function for Output Layer
                 lay[i].actv[j] = 1 / (1 + exp(-lay[i].z[j]));
-            if (debug == 1) printf("%f %f ", lay[i].actv[j], lay[i].z[j]);
+
         }
-        if (debug == 1) printf("\n\n");
+
+        if (debug == 1) {
+            printf("Valors activació capa %d \n", i);
+            for (int j = 0; j < num_neurons[i]; j++)
+                printf("%f %f ", lay[i].actv[j], lay[i].z[j]);
+            printf("\n\n");
+        }        
     }
 }
 
