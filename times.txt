@@ -1,16 +1,16 @@
 WILMA (new-nodo.q):
 Només forward_prop parallelitzada.
 Num threads=2
-- T(N, 2) = 8.733491s
+- T(N, 2) = 8.751128s
 - Total encerts = 929 (/946) 
 Num threads=4
-- T(N, 4) = 7.562934s
+- T(N, 4) = 7.659405s
 - Total encerts = 929 (/946) 
 Num threads=6
-- T(N, 6)= 7.165764s
+- T(N, 6)= 7.075999s
 - Total encerts = 929 (/946)
 Num threads=12
-- T(N, 12)= 6.724122s
+- T(N, 12)= 6.694221s
 - Total encerts = 929 (/946)
 
 AOLIN (TEST.Q):
@@ -32,16 +32,16 @@ WILMA (nodo.q):
 
 Només forward_prop parallelitzada.
 Num threads=2
-- T(N, 2) = 31.137338s
+- T(N, 2) = 30.982346s
 - Total encerts = 929 (/946) 
 Num threads=4
-- T(N, 4) = 26.105798s
+- T(N, 4) = 25.796016s
 - Total encerts = 929 (/946) 
 Num threads=6
-- T(N, 6)= 24.589777s
+- T(N, 6)= 24.292917s
 - Total encerts = 929 (/946)
 Num threads=12
-- T(N, 12)= 23.513262s
+- T(N, 12)= 24.091474s
 - Total encerts = 929 (/946)
 
 AOLIN (AOLIN.Q):
