@@ -90,13 +90,14 @@ void forward_prop() {
                         1.0 / (1.0 + exp(-lay[i].z[j]));
             }
 
-            #pragma omp single
-            {
-                if (debug == 1) {
+
+            if (debug == 1) {
+                #pragma omp single
+                {
                     printf("Valors activació capa %d\n", i);
                     for (int j = 0; j < num_neurons[i]; j++)
                         printf("%f %f ",
-                               lay[i].actv[j], lay[i].z[j]);
+                                lay[i].actv[j], lay[i].z[j]);
                     printf("\n\n");
                 }
             }

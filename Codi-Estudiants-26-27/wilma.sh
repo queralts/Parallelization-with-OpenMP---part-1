@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -N 1
 #SBATCH --exclusive
-#SBATCH --partition=new-nodo.q
+#SBATCH --partition=nodo.q
 
 module add gcc/13.2.1
 
