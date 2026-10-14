@@ -5,7 +5,13 @@
 
 module add gcc/13.2.1
 
-gcc -Ofast main.c common/common.c configuration/config.c layer/layer.c randomizer/randomizer.c initialize/initialize.c training/training.c -o exec -lm 
+# ---- SEQUENTIAL ----
+#gcc -Ofast -g $SRC -o exec -lm -lgomp
+
+# ---- PARALLEL ----
+gcc -Ofast -g -fopenmp $SRC -o exec -lm
+export OMP_NUM_THREADS=2
+
 
 export OMP_NUM_THREADS=12
 

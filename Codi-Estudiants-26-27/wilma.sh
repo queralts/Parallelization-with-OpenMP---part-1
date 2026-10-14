@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -N 1
 #SBATCH --exclusive
-#SBATCH --partition=nodo.q
+#SBATCH --partition=new-nodo.q
 
 module add gcc/13.2.1
 
@@ -12,7 +12,7 @@ SRC="main.c common/common.c configuration/config.c layer/layer.c randomizer/rand
 
 # ---- PARALLEL ----
 gcc -Ofast -g -fopenmp $SRC -o exec -lm
-export OMP_NUM_THREADS=12
+export OMP_NUM_THREADS=2
 
 #./exec
 perf stat ./exec
