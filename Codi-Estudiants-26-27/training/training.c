@@ -105,6 +105,8 @@ void forward_prop() {
             }
         }
     }
+}
+
 /** 
  * @brief Calcula la funció de perdua per cada patró i l'acumulat fins el punt actual 
  * d'entrenament

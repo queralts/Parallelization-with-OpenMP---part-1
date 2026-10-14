@@ -12,7 +12,7 @@ SRC="main.c common/common.c configuration/config.c layer/layer.c randomizer/rand
 
 # ---- PARALLEL ----
 gcc -Ofast -g -fopenmp $SRC -o exec -lm
-export OMP_NUM_THREADS=2
+export OMP_NUM_THREADS=12
 
 #./exec
 perf stat ./exec
