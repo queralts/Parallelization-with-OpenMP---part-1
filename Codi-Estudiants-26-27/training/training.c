@@ -91,20 +91,20 @@ void forward_prop() {
             }
 
 
-            if (debug == 1) {
-                #pragma omp single
-                {
+            #pragma omp single
+            {
+                if (debug == 1) {
                     printf("Valors activació capa %d\n", i);
+
                     for (int j = 0; j < num_neurons[i]; j++)
                         printf("%f %f ",
-                                lay[i].actv[j], lay[i].z[j]);
+                               lay[i].actv[j], lay[i].z[j]);
+
                     printf("\n\n");
                 }
             }
         }
     }
-}
-
 /** 
  * @brief Calcula la funció de perdua per cada patró i l'acumulat fins el punt actual 
  * d'entrenament
@@ -207,15 +207,23 @@ void back_prop(int p) {
  *
  * @see back_prop
  */
-void update_weights(void) {
-    for (int i = 0; i < num_layers - 1; i++) {
-        for (int j = 0; j < num_neurons[i + 1]; j++)
-            for (int k = 0; k < num_neurons[i]; k++)  // Update Weights
-                lay[i].out_weights[j * num_neurons[i] + k] =
-                    (lay[i].out_weights[j * num_neurons[i] + k]) -
-                    (alpha * lay[i].dw[j * num_neurons[i] + k]);
 
-        for (int j = 0; j < num_neurons[i]; j++)  // Update Bias
-            lay[i].bias[j] = lay[i].bias[j] - (alpha * lay[i].dbias[j]);
+void update_weights(void) {
+    #pragma omp parallel
+    {
+        for (int i = 0; i < num_layers - 1; i++) {
+
+            #pragma omp for schedule(static) nowait
+            for (int j = 0; j < num_neurons[i + 1]; j++)
+                for (int k = 0; k < num_neurons[i]; k++)  // Update Weights
+                    lay[i].out_weights[j * num_neurons[i] + k] =
+                        (lay[i].out_weights[j * num_neurons[i] + k]) -
+                        (alpha * lay[i].dw[j * num_neurons[i] + k]);
+
+            #pragma omp for schedule(static) nowait
+            for (int j = 0; j < num_neurons[i]; j++)  // Update Bias
+                lay[i].bias[j] = lay[i].bias[j] - (alpha * lay[i].dbias[j]);
+        }
     }
 }
+
